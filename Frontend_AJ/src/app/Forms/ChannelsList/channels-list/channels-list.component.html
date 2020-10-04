@@ -1,0 +1,43 @@
+<div>
+    <h2>Channel Subscription</h2>
+</div>
+<button type="button" class="btn btn-primary marginClass" value="all" (click)="filterData($event)">All</button>
+<button type="button" class="btn btn-primary marginClass" value="sports" (click)="filterData($event)" >Sports</button>
+<button type="button" class="btn btn-primary marginClass" value="news" (click)="filterData($event)">News</button>
+<button type="button" class="btn btn-primary marginClass" value="music" (click)="filterData($event)">Music</button>
+
+<button type="button" class="btn btn-primary rightButton" (click)="getUserBillingDetails($event)">Billing Details &nbsp; <i class="fas iconSize">&#xf218;</i></button>
+<button type="button" class="btn btn-primary rightButton" (click)="saveAllChanges($event)">Save All Changes</button>
+<br>
+Edit Subscribed Channels
+<kendo-grid [data]="displayUserSubChannels" [height]="250" (edit)="editHandler($event)">
+
+    <kendo-grid-command-column title="UPDATE" width="80">
+        <ng-template kendoGridCellTemplate *ngIf="!billingDetailsClicked">
+            <button kendoGridEditCommand [primary]="true"><i class="fas iconSize">&#xf303;</i></button>
+        </ng-template>
+    </kendo-grid-command-column>
+
+    <kendo-grid-column *ngFor="let col of userSubscribedChannelsColumnList" [title]="col.title | uppercase" [field]="col.field"
+        width="150"></kendo-grid-column>
+</kendo-grid>
+Subscribe New Channels
+<kendo-grid [data]="displayAllChannels" [height]="250" (edit)="editHandler($event)">
+
+    <kendo-grid-command-column title="ADD" width="80">
+        <ng-template kendoGridCellTemplate *ngIf="!billingDetailsClicked">
+            <button kendoGridEditCommand [primary]="true" (click)="addNewChannelBtnClicked()"><i class="fas iconSize">&#xf35d;</i> </button>
+        </ng-template>
+    </kendo-grid-command-column>
+
+    <kendo-grid-column *ngFor="let col of allChannelsColumnList" [title]="col | uppercase" [field]="col" width="150">
+    </kendo-grid-column>
+</kendo-grid>
+
+<app-useroperations [model]="editDataItem" [isNew]="isNew" (save)="saveHandler($event)" (cancel)="cancelHandler()">
+
+</app-useroperations>
+
+<app-billing-details [activeBilling]="activeBilling"  [model]="userBillingDetailsList" (save)="saveBillingDetailsHandler($event)" (cancel)="cancelHandler()" > 
+
+</app-billing-details>

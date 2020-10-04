@@ -1,0 +1,37 @@
+<kendo-dialog *ngIf="active" [width]="600" [height]="450" (close)="closeForm()">
+    <kendo-dialog-titlebar>
+      Billing Detaills
+    </kendo-dialog-titlebar>
+    <div>
+        <h4>
+            Total : &#8377; {{ totalPrice}}
+        </h4>
+    </div>
+    <div class="scrolling">
+    <div class="card">
+        <div class="card-body">
+        <div class="row">
+            <div class="columnWidth"><strong>Channel Name</strong> </div>
+            <div class="columnWidth"><strong> Price/Day </strong></div>
+            <div class="columnWidth"><strong> Days</strong></div>
+            <div class="columnWidth"><strong> Cost</strong></div>
+        </div>
+        </div>
+      </div>
+    <!--  -->
+    <div class="card" *ngFor="let item of model">
+        <div class="card-body">
+            <div class="row">
+                <div class="columnWidth"> {{item.ChannelName}}</div>
+                <div class="columnWidth"> &#8377; {{item.ChannelPrice}}</div>
+                <div class="columnWidth"> {{item.ChannelSubDays}}</div>
+                <div class="columnWidth">&#8377; {{item.ChannelTotalCost}}</div>
+            </div>
+        </div>
+    </div>
+    </div>
+      <kendo-dialog-actions>
+          <button class="k-button" (click)="onCancel($event)">Cancel</button>
+          <button class="k-button k-primary"  (click)="onSave($event)">Save</button>
+      </kendo-dialog-actions>
+  </kendo-dialog>
