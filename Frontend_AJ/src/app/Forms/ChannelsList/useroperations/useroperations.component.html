@@ -1,0 +1,63 @@
+<kendo-dialog *ngIf="active" [width]="400" [height]="450" (close)="closeForm()">
+    <kendo-dialog-titlebar>
+      {{ isNew ? 'Subscribe New Channel' : 'Edit Subscribed Channel' }}
+    </kendo-dialog-titlebar>
+
+      <form novalidate [formGroup]="editForm">
+          <div class="form-group" >
+              <label for="ChannelName" class="control-label">Channel name</label>
+
+              <input type="text"  class="k-textbox" formControlName="ChannelName" />
+
+              <!-- <div
+                  class="k-tooltip k-tooltip-validation"
+                  [style.visibility]=
+                      "editForm.controls.ChannelName.valid || editForm.controls.ChannelName.pristine ? 'hidden':'visible'">
+                  ProductName is required
+              </div> -->
+          </div>
+          <div class="form-group">
+              <label for="ChannelPrice" class="control-label">Channel price</label>
+
+              <input type="text"  class="k-textbox" formControlName="ChannelPrice" />
+          </div>
+          <!-- <div class="form-group">
+              <label for="UnitsInStock" class="control-label">Units in stock</label>
+
+              <input type="text" class="k-textbox" formControlName="UnitsInStock" />
+
+              <div
+                  class="k-tooltip k-tooltip-validation"
+                  [style.visibility]=
+                      "editForm.controls.UnitsInStock.valid || editForm.controls.UnitsInStock.pristine ? 'hidden':'visible'">
+                  Units must be between 0 and 99
+              </div>
+          </div> -->
+          <div class="form-group" *ngIf="!isNew">
+            <label for="ChannelOperation" class="control-label">Extend / Resume / Pause</label>
+            <select class="custom-select" (change)="changeCity($event)" formControlName="ChannelOperation">
+               
+                <option *ngFor="let op of Operation" [ngValue]="op"  >{{op}}</option>
+             </select>
+          </div>
+          <div class="form-group">
+  
+              <kendo-daterange *ngIf="showDatePicker || isNew">
+                <label>
+                    <span class="label">Start</span><br>
+                    <kendo-dateinput placeholder="DD-MM-YYYY" kendoDateRangeStartInput formControlName="ChannelSubFromDate" [format]="'dd-MM-yyyy'" [(value)]="range.start"></kendo-dateinput>
+                </label>
+                <label>
+                    <span class="label">End</span><br>
+                    <kendo-dateinput placeholder="DD-MM-YYYY" kendoDateRangeEndInput formControlName="ChannelSubToDate" [format]="'dd-MM-yyyy'" [(value)]="range.end"></kendo-dateinput>
+                </label>
+                <kendo-daterange-popup [animate]="true"></kendo-daterange-popup>
+            </kendo-daterange>
+        </div>
+      </form>
+
+      <kendo-dialog-actions>
+          <button class="k-button" (click)="onCancel($event)">Cancel</button>
+          <button class="k-button k-primary" [disabled]="!editForm.valid" (click)="onSave($event)">Save</button>
+      </kendo-dialog-actions>
+  </kendo-dialog>
