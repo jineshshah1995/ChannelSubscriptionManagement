@@ -23,8 +23,8 @@ To start the Angular Channel Subscription Management
 3. If user is authenticated then user is shown list of channels application supports as well as his/her already subscribed channel list
 4. If user want to 'Extend / Resume / Pause' the already subscribed channel then he/she needs to click on edit and perform the relevant actions.
 5. Various actions can be
-    a. Selecting no of days to resume and extend the subscription. 
-    b. Pause the subscription by selecting the 'Pause' option from the dropdown.
+    - Selecting no of days to resume and extend the subscription. 
+    - Pause the subscription by selecting the 'Pause' option from the dropdown.
 6. On Save button click, The subscription information is saved in billing details(Incase of Extend and Resume only). 
 7. Once the billing information is saved user need to confirm by click on save all changes button.
 8. Similar set of operation can be perform by user to add new channel subscription.
