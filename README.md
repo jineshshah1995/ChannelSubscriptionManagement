@@ -1,6 +1,6 @@
 # ChannelSubscriptionManagement
 
-# Steps to run Backend express.js (Node js)
+# Steps To Run Backend Express.js (Node js)
 
 To start the express server
 
@@ -10,11 +10,11 @@ To start the express server
 
 # Steps to run Frontend Angular
 
-To start the angular Channel subscription management
+To start the Angular Channel Subscription Management
 
 1. Goto Frontend_AJ folder and `run npm install`
 2. Open cmd and run `ng serve`
-3. run npm start this will start web server on port `4200`.
+3. This will start web server on port `4200`.
 
 # Various Operations supported in UI.
 
@@ -22,7 +22,7 @@ To start the angular Channel subscription management
 2. Once user registers, He/She is redirected to login page.
 3. If user is authenticated then user is shown list of channels application supports as well as his/her already subscribed channel list
 4. If user want to 'Extend / Resume / Pause' the already subscribed channel then he/she needs to click on edit and perform the relevant actions.
-5. Various actions can be 
+5. Various actions can be
     a. Selecting no of days to resume and extend the subscription. 
     b. Pause the subscription by selecting the 'Pause' option from the dropdown.
 6. On Save button click, The subscription information is saved in billing details(Incase of Extend and Resume only). 
